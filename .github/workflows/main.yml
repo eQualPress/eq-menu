@@ -13,11 +13,11 @@ jobs:
             -   name: Checkout
                 uses: actions/checkout@v3
 
-            -   name: Build Plugin
-            #                run: |
-            #                    composer install --no-dev
-            #                    npm install
-            #                    npm run build
+#            -   name: Build Plugin
+#                run: |
+#                    composer install --no-dev
+#                    npm install
+#                    npm run build
 
             -   name: Generate ZIP
                 uses: 10up/action-wordpress-plugin-build-zip@stable
