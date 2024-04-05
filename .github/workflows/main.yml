@@ -13,10 +13,17 @@ jobs:
             -   name: Checkout
                 uses: actions/checkout@v3
 
+            -   name: Extract Repository Name
+                id: extract_repo_name
+                run: |
+                    REPO_NAME=$(basename $GITHUB_REPOSITORY)
+                    echo "Repository Name: $REPO_NAME"
+                    echo "::set-output name=repo_name::$REPO_NAME"
+
             -   name: Extract Version
                 id: extract_version
                 run: |
-                    VERSION=$(grep -oP "^ \* Version: \K[0-9.]+" ${GITHUB_REPOSITORY}.php)
+                    VERSION=$(grep -oP "^ \* Version: \K[0-9.]+" ${GITHUB_WORKSPACE}/${{ steps.extract_repo_name.outputs.repo_name }}.php)
                     echo "Extracted version: $VERSION"
                     echo "::set-output name=version::$VERSION"
 
@@ -25,7 +32,7 @@ jobs:
                 uses: softprops/action-gh-release@v1
                 with:
                     files: |
-                        ${GITHUB_REPOSITORY}.zip
+                        ${GITHUB_WORKSPACE}/${{ steps.extract_repo_name.outputs.repo_name }}.zip
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
