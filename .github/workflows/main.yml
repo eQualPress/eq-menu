@@ -1,39 +1,37 @@
 name: Build and Release
 
 on:
-  push:
-    branches:
-      - trunk
-    tags:
-      - '*'
+    push:
+        branches:
+            - main
 
 jobs:
-  build_and_release:
-    name: Build and Release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    build_and_release:
+        name: Build and Release
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v3
 
-      - name: Build Plugin
-        run: |
-          composer install --no-dev
-          npm install
-          npm run build
+            -   name: Build Plugin
+                run: |
+                    composer install --no-dev
+                    npm install
+                    npm run build
 
-      - name: Generate ZIP
-        uses: 10up/action-wordpress-plugin-build-zip@stable
-        env:
-          SLUG: eq-menu
+            -   name: Generate ZIP
+                uses: 10up/action-wordpress-plugin-build-zip@stable
+                env:
+                    SLUG: eq-menu
 
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            eq-menu.zip
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            -   name: Create Release
+                id: create_release
+                uses: softprops/action-gh-release@v1
+                with:
+                    files: |
+                        eq-menu.zip
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get Release URL
-        run: echo "Release URL - ${{ steps.create_release.outputs.html_url }}"
+            -   name: Get Release URL
+                run: echo "Release URL - ${{ steps.create_release.outputs.html_url }}"
