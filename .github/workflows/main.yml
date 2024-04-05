@@ -2,8 +2,8 @@ name: Build and Release
 
 on:
     push:
-        branches:
-            - main
+        tags:
+            - '*'
 
 jobs:
     build_and_release:
@@ -26,6 +26,11 @@ jobs:
                       echo "::set-output name=version::$VERSION"
                     fi
 
+            -   name: Create and Push Tag
+                run: |
+                    git tag -a v${{ steps.extract_version.outputs.version }} -m "Version ${{ steps.extract_version.outputs.version }}"
+                    git push origin v${{ steps.extract_version.outputs.version }}
+
             -   name: Create Release
                 id: create_release
                 uses: softprops/action-gh-release@v1
@@ -34,6 +39,3 @@ jobs:
                         ${GITHUB_WORKSPACE}/${{ github.event.repository.name }}.zip
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-            -   name: Get Release URL
-                run: echo "Release URL - ${{ steps.create_release.outputs.html_url }}"
