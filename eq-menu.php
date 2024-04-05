@@ -60,8 +60,12 @@ add_action( 'init', function () {
                     ]
                 ], 'eQual', 'Test2', 'edit_posts', 'dashicons-menu' );
         } );
+
+
     }
 } );
+
+
 
 /**
  * Enqueue styles and scripts.
@@ -69,11 +73,11 @@ add_action( 'init', function () {
  * @return void
  */
 function eq_menu_enqueue_styles_and_scripts() {
-    wp_enqueue_style( 'eq_menu_fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', [], false );
-    wp_enqueue_style( 'eq_menu_material.fonts', 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,400italic|Roboto+Mono:400,500|Material+Icons|Google+Material+Icons', [], false );
-    wp_enqueue_style( 'eq_menu_material', 'https://unpkg.com/material-components-web@12.0.0/dist/material-components-web.min.css', [], false );
-    wp_enqueue_style( 'eq_menu_jquery.ui', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css', [], false );
-    wp_enqueue_style( 'eq_menu_jquery.daterange', 'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css', [], false );
+    wp_enqueue_style( 'eq_menu_fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
+    wp_enqueue_style( 'eq_menu_material.fonts', 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,400italic|Roboto+Mono:400,500|Material+Icons|Google+Material+Icons' );
+    wp_enqueue_style( 'eq_menu_material', 'https://unpkg.com/material-components-web@12.0.0/dist/material-components-web.min.css' );
+    wp_enqueue_style( 'eq_menu_jquery.ui', 'https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css' );
+    wp_enqueue_style( 'eq_menu_jquery.daterange', 'https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css' );
     wp_enqueue_script( 'eq_menu_eq_lib', plugin_dir_url( __FILE__ ) . '/admin/assets/js/equal.bundle.js' );
     wp_enqueue_script( 'eq_menu_eq_frame', plugin_dir_url( __FILE__ ) . '/admin/assets/js/menu.js' );
 }
@@ -87,7 +91,7 @@ function eq_menu_enqueue_styles_and_scripts() {
 function eq_add_menu( $menu_id, $page_title, $menu_title, $capability, $icon_url = '' ) {
     $load_page = function () {
         echo '<div id="sb-menu" style="height: 30px;"></div>';
-        echo ' <div id="sb-container" style="margin-top: 20px;"></div>';
+        echo '<div id="sb-container" style="margin-top: 20px;"></div>';
     };
 
     $menu_slug = str_replace( [ ' ', '-' ], [ '' ], strtolower( $menu_title ) );
