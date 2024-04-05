@@ -19,10 +19,10 @@ jobs:
 #                    npm install
 #                    npm run build
 
-            -   name: Generate ZIP
-                uses: 10up/action-wordpress-plugin-build-zip@stable
-                env:
-                    SLUG: eq-menu
+#            -   name: Generate ZIP
+#                uses: 10up/action-wordpress-plugin-build-zip@stable
+#                env:
+#                    SLUG: eq-menu
 
             -   name: Create Release
                 id: create_release
