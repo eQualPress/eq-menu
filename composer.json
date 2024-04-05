@@ -1,0 +1,17 @@
+{
+  "name": "yesbabylon/eq-menu",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "AlexisVS",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  },
+  "scripts": {
+    "test": "phpcs -ps . --standard=WordPress"
+  }
+}
