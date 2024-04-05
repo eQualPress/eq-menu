@@ -13,16 +13,12 @@ jobs:
             -   name: Checkout
                 uses: actions/checkout@v3
 
-#            -   name: Build Plugin
-#                run: |
-#                    composer install --no-dev
-#                    npm install
-#                    npm run build
-
-#            -   name: Generate ZIP
-#                uses: 10up/action-wordpress-plugin-build-zip@stable
-#                env:
-#                    SLUG: eq-menu
+            -   name: Extract Version
+                id: extract_version
+                run: |
+                    VERSION=$(grep -oP "^ \* Version: \K[0-9.]+" plugin.php)
+                    echo "Extracted version: $VERSION"
+                    echo "::set-output name=version::$VERSION"
 
             -   name: Create Release
                 id: create_release
