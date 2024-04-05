@@ -15,17 +15,19 @@ jobs:
 
             -   name: Extract Repository Name
                 id: extract_repo_name
-                run: |
-                    REPO_NAME=$(basename $GITHUB_REPOSITORY)
-                    echo "Repository Name: $REPO_NAME"
-                    echo "::set-output name=repo_name::$REPO_NAME"
+                run: echo "REPO_NAME=$(basename $GITHUB_REPOSITORY)" >> $GITHUB_ENV
 
             -   name: Extract Version
                 id: extract_version
                 run: |
-                    VERSION=$(grep -oP "^ \* Version: \K[0-9.]+" ${GITHUB_WORKSPACE}/${{ steps.extract_repo_name.outputs.repo_name }}.php)
-                    echo "Extracted version: $VERSION"
-                    echo "::set-output name=version::$VERSION"
+                    VERSION=$(grep -oP "^ \* Version: \K[0-9.]+" ${GITHUB_WORKSPACE}/${{ steps.extract_repo_name.outputs.repo_name }}.php || echo "No version found")
+                    if [[ "$VERSION" == "No version found" ]]; then
+                      echo "Error: Version not found in PHP file."
+                      exit 1
+                    else
+                      echo "Extracted version: $VERSION"
+                      echo "::set-output name=version::$VERSION"
+                    fi
 
             -   name: Create Release
                 id: create_release
