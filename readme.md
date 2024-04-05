@@ -31,24 +31,51 @@ Menus refers to eQual entities that are used.
 
 call the function `eq_add_menu` in your theme or plugin to add a menu to the admin bar.
 
-the menu is an array and it's item structure is as follows:
+the menu is an array, and its item structure is as follows:
+
+**JSON format:**
 
 ```json
 {
-    "id": "users",
-    "type": "entry",
-    "label": "Users",
-    "icon": "person",
-    "description": "",
-    "context": {
-        "entity": "core\\User",
-        "view": "list.default"
-    }
+    "menu": [
+        {
+            "id": "users",
+            "type": "entry",
+            "label": "Users",
+            "icon": "person",
+            "description": "",
+            "context": {
+                "entity": "core\\User",
+                "view": "list.default"
+            }
+        },
+        ...
+    ]
 }
 ```
 
+**PHP format:**
+
 ```php
-eq_add_menu(
+[
+    [
+        "id"          => "settings.settings.settings_values",
+        "type"        => "entry",
+        "label"       => "Settings values",
+        "description" => "",
+        "context"     => [
+            "entity"  => "core\setting\SettingValue",
+            "view"    => "list.default"
+        ]
+    ],
+    ...
+];
+```
+
+**eq_add_menu function signature:**
+
+```php
+function eq_add_menu(
     array | string  $menu_id,
     string          $page_title,
     string          $menu_title,
@@ -74,7 +101,7 @@ Answer to foo bar dilemma.
 
 ## Screenshots
 
-![](C:\wamp64\www\equal\public\wp-content\plugins\eq-menu\doc\images\poster.png)
+![](.\doc\images\poster.png)
 
 ## Changelog
 
