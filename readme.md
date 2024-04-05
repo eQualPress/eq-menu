@@ -21,6 +21,7 @@ A plugin that adds a menu to the admin bar.
 ## Description
 
 This plugin adds a menu to the admin bar.
+Menus refers to eQual entities that are used.
 
 ### Features
 
@@ -28,7 +29,7 @@ This plugin adds a menu to the admin bar.
 
 ### Usage
 
-call the function
+call the function `eq_add_menu` in your theme or plugin to add a menu to the admin bar.
 
 ```php
 eq_add_menu(
