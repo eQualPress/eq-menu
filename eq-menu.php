@@ -6,7 +6,7 @@
  * Author:          AlexisVS
  * Author URI:      https://github.com/AlexisVS
  * Text Domain:     eq-menu
- * Domain Path:     /languages
+ * Domain Path:     /
  * Version:         0.1.0
  *
  * @package         Eq_Menu
