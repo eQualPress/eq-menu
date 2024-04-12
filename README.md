@@ -132,6 +132,11 @@ function eq_add_menu(
 );
 ```
 
+### Hooks and Filters used
+
+- init
+- admin_menu
+
 ## Installation
 
 1. Upload `eq-menu.zip` to the `/wp-content/plugins/` directory or by WordPress plugin manager
