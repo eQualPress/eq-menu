@@ -139,7 +139,7 @@ function eq_add_menu(
 
 ## Installation
 
-1. Upload `eq-menu.zip` to the `/wp-content/plugins/` directory or by WordPress plugin manager
+1. Upload `eq-menu.zip` to the `/public/wp-content/plugins/` directory or by WordPress plugin manager
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 ## Frequently Asked Questions
