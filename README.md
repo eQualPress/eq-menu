@@ -8,7 +8,7 @@ Requires at least: 4.5
 
 Tested up to: 6.5
 
-Requires PHP: 7.3
+Requires PHP: 7.4.33
 
 Stable tag: 0.1.0
 
@@ -23,7 +23,7 @@ A plugin that adds a menu to the admin bar.
 This plugin adds a menu to the admin bar.
 Menus refer to eQual entities that are used.
 
-The plugin provides the following features:
+## Features
 
 - Add menus to the admin bar.
 - Menus refer to eQual entities that are used.
