@@ -8,6 +8,8 @@
  * Text Domain:     eq-menu
  * Domain Path:     /
  * Version:         0.1.0
+ * Requires at least: 0.1.0
+ * Requires: eq-run
  *
  * @package         Eq_Menu
  */
@@ -66,7 +68,6 @@ add_action( 'init', function () {
 } );
 
 
-
 /**
  * Enqueue styles and scripts.
  *
@@ -85,6 +86,8 @@ function eq_menu_enqueue_styles_and_scripts() {
 
 /**
  * Add admin menu.
+ *
+ * Todo: change $menu_id avec soit un array ( menu ) soit un path plugin_dir . './..' ...
  *
  * @return void
  */
