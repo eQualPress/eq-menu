@@ -28,6 +28,8 @@ Menus refer to eQual entities that are used.
 - Add menus to the admin bar.
 - Menus refer to eQual entities that are used.
 - The plugin is compatible with the eQual framework.
+- Submenu in WordPress: opening eQ contexts
+- Ability to inject an App (double left menu)
 
 ### Usage
 
