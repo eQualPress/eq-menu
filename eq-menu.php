@@ -87,11 +87,11 @@ function eq_menu_enqueue_styles_and_scripts() {
 /**
  * Add admin menu.
  *
- * Todo: change $menu_id avec soit un array ( menu ) soit un path plugin_dir . './..' ...
+ * @param string|array $menu_data it can be a path to a json file or an array containing the menu data.
  *
  * @return void
  */
-function eq_add_menu( $menu_id, $page_title, $menu_title, $capability, $icon_url = '' ) {
+function eq_add_menu( $menu_data, string $page_title, string $menu_title, string $capability, string $icon_url = '' ) {
     $load_page = function () {
         echo '<div id="sb-menu" style="height: 30px;"></div>';
         echo '<div id="sb-container" style="margin-top: 20px;"></div>';
@@ -101,12 +101,12 @@ function eq_add_menu( $menu_id, $page_title, $menu_title, $capability, $icon_url
 
     add_menu_page( $page_title, $menu_title, $capability, $menu_slug, $load_page, $icon_url );
 
-    if ( gettype( $menu_id ) == 'string' ) {
-        $data = file_get_contents( plugin_dir_path( __FILE__ ) . '/admin/assets/' . $menu_id . '.json' );
+    if ( gettype( $menu_data ) == 'string' ) {
+        $data = file_get_contents( $menu_data );
         $json = json_decode( $data, true );
         $menu = $json['menu'];
-    } elseif ( gettype( $menu_id ) == 'array' ) {
-        $menu = $menu_id;
+    } elseif ( gettype( $menu_data ) == 'array' ) {
+        $menu = $menu_data;
     }
 
     foreach ( $menu as $item ) {
