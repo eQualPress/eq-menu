@@ -125,8 +125,16 @@ the menu is an array, and its item structure is as follows:
 **eq_add_menu function signature:**
 
 ```php
+/**
+ * Add admin menu.
+ *
+ * @param string|array $menu_data it can be a path to a json file or an array containing the menu data.
+ * An example : (string) $menu_data = plugin_dir(__FILE__). '/assets/menu.json' ;
+ *
+ * @return void
+ */
 function eq_add_menu(
-    array | string  $menu_id,
+    array | string  $menu_data,
     string          $page_title,
     string          $menu_title,
     string          $capability,
