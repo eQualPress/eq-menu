@@ -10,7 +10,7 @@ Tested up to: 6.5
 
 Requires PHP: 7.4.33
 
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 
 License: GPLv2 or later
 
@@ -158,9 +158,22 @@ function eq_add_menu(
 
 ![](.\doc\images\poster.png)
 
+## Developer notes
+
+Take care of the following points when you want to use this plugin:
+
+- ``/admin/assets/equal.bundle.js``: change the value of the ``backend_url`` and ``rest_api_url`` variables to the
+  correct values.
+    - The ``backend_url`` need to have the path to the ``equal.php`` file.
+    - The ``rest_api_url`` need to have the path to the root of the eQual API + ``/``.
+
 ## Changelog
+
+### 0.1.1
+
+- Changed the value of the ``backend_url`` variable in the ``equal.bundle.js`` file.
+- Added a Developer notes section to the README.md file.
 
 ## Upgrade Notice
 
-## Arbitrary section
 
