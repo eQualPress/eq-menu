@@ -174,6 +174,9 @@ Take care of the following points when you want to use this plugin:
 - Changed the value of the ``backend_url`` variable in the ``equal.bundle.js`` file.
 - Added a Developer notes section to the README.md file.
 
+### 0.1.2
+- Updated the ``equal.bundle.js`` file.
+
 ## Upgrade Notice
 
 

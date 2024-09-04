@@ -7,9 +7,9 @@
  * Author URI:      https://github.com/AlexisVS
  * Text Domain:     eq-menu
  * Domain Path:     /
- * Version:         0.1.1
- * Requires at least: 0.1.1
- * Requires: eq-run
+ * Version:         0.1.2
+ * Requires at least: 0.1.2
+ * Requires: eq-run, eq-auth
  *
  * @package         Eq_Menu
  */
@@ -21,11 +21,11 @@ if (!defined('WPINC')) {
 
 add_action('init', function () {
     if (is_admin()) {
+
         // Enqueue styles and scripts
         add_action('admin_enqueue_scripts', 'eq_menu_enqueue_styles_and_scripts');
 
         // Add admin menu
-
         add_action('admin_menu', function () {
 
             $menu = __DIR__ . '/admin/assets/menu.json';
@@ -66,8 +66,6 @@ add_action('init', function () {
                 ]
             ], 'eQual', 'Test2', 'edit_posts', 'dashicons-menu');
         });
-
-
     }
 });
 
@@ -77,7 +75,7 @@ add_action('init', function () {
  *
  * @return void
  */
-function eq_menu_enqueue_styles_and_scripts()
+function eq_menu_enqueue_styles_and_scripts(): void
 {
     wp_enqueue_style('eq_menu_fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
     wp_enqueue_style('eq_menu_material.fonts', 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700,400italic|Roboto+Mono:400,500|Material+Icons|Google+Material+Icons');
@@ -92,12 +90,16 @@ function eq_menu_enqueue_styles_and_scripts()
 /**
  * Add admin menu.
  *
- * @param string|array $menu_data it can be a path to a json file or an array containing the menu data.
+ * @param array|string $menu_data it can be a path to a json file or an array containing the menu data.
  * An example : (string) $menu_data = plugin_dir(__FILE__). '/assets/menu.json' ;
- *
+ * @param string $page_title
+ * @param string $menu_title
+ * @param string $capability
+ * @param string $icon_url
  * @return void
+ * @throws Exception
  */
-function eq_add_menu($menu_data, string $page_title, string $menu_title, string $capability, string $icon_url = '')
+function eq_add_menu($menu_data, string $page_title, string $menu_title, string $capability, string $icon_url = ''): void
 {
     $load_page = function () {
         echo '<div id="sb-menu" style="height: 30px;"></div>';
@@ -117,10 +119,12 @@ function eq_add_menu($menu_data, string $page_title, string $menu_title, string 
         $menu = $menu_data;
     }
 
-    foreach ($menu as $item) {
-        if (isset($item['context'])) {
-            $item_slug = $menu_slug . '&context=' . urlencode(json_encode($item['context']));
-            add_submenu_page($menu_slug, $page_title, $item['label'], $capability, $item_slug, $load_page);
+    if (isset($menu)) {
+        foreach ($menu as $item) {
+            if (isset($item['context'])) {
+                $item_slug = $menu_slug . '&context=' . urlencode(json_encode($item['context']));
+                add_submenu_page($menu_slug, $page_title, $item['label'], $capability, $item_slug, $load_page);
+            }
         }
     }
 }
