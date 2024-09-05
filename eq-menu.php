@@ -7,7 +7,7 @@
  * Author URI:      https://github.com/AlexisVS
  * Text Domain:     eq-menu
  * Domain Path:     /
- * Version:         0.1.2
+ * Version:         0.1.3
  * Requires at least: 0.1.2
  * Requires: eq-run, eq-auth
  *
@@ -104,6 +104,18 @@ function eq_add_menu($menu_data, string $page_title, string $menu_title, string 
     $load_page = function () {
         echo '<div id="sb-menu" style="height: 30px;"></div>';
         echo '<div id="sb-container" style="margin-top: 20px;"></div>';
+
+        // Check if the cookie is set
+        if (!isset($_COOKIE['access_token'])) {
+            // Get the current domain URL
+            $domainUrl = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" :
+                    "http") . "://$_SERVER[HTTP_HOST]";
+
+            // Output the link to /auth
+            echo '<p>You\'re not connected to eQual. Please connect first to <a href="' . $domainUrl . '/auth">eQual</a></p>';
+            echo '<br/><br/>';
+            echo '<p>Do you have an eQual account?</p>';
+        }
     };
 
     $menu_slug = str_replace([' ', '-'], [''], strtolower($menu_title));
@@ -128,4 +140,3 @@ function eq_add_menu($menu_data, string $page_title, string $menu_title, string 
         }
     }
 }
-

@@ -10,7 +10,7 @@ Tested up to: 6.5
 
 Requires PHP: 7.4.33
 
-Stable tag: 0.1.1
+Stable tag: 0.1.3
 
 License: GPLv2 or later
 
@@ -176,6 +176,9 @@ Take care of the following points when you want to use this plugin:
 
 ### 0.1.2
 - Updated the ``equal.bundle.js`` file.
+
+### 0.1.3
+- Added messages if a user is not logged in to eQual on the WordPress admin dashboard in the eQual menu sections.
 
 ## Upgrade Notice
 
