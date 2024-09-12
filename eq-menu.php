@@ -112,9 +112,7 @@ function eq_add_menu($menu_data, string $page_title, string $menu_title, string 
                     "http") . "://$_SERVER[HTTP_HOST]";
 
             // Output the link to /auth
-            echo '<p>You\'re not connected to eQual. Please connect first to <a href="' . $domainUrl . '/auth">eQual</a></p>';
-            echo '<br/><br/>';
-            echo '<p>Do you have an eQual account?</p>';
+            echo '<h3>You\'re not connected to eQual.</h3><br> <a class="button button-primary button-large" href="' . $domainUrl . '/auth">Log in to eQual</a>';
         }
     };
 
