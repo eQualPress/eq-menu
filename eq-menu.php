@@ -90,7 +90,18 @@ function eq_menu_enqueue_styles_and_scripts(): void
 /**
  * Add admin menu.
  *
- * @param array|string $menu_data it can be a path to a json file or an array containing the menu data.
+ * @param string | array{
+ * array{
+ *     id: string,
+ *     type: string,
+ *     label: string,
+ *     description: string,
+ *     context: array{
+ *         entity: string,
+ *         view: string,
+ *     }
+ *   }
+ * } $menu_data it can be a path to a json file or an array containing the menu data.
  * An example : (string) $menu_data = plugin_dir(__FILE__). '/assets/menu.json' ;
  * @param string $page_title
  * @param string $menu_title
